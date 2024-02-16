@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    font-family: "Courier New", Arial, sans-serif;
+}
+main{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+img{
+    width: 350px;
+}
+img:hover{
+    animation-duration: 0.3s;
+    animation-name: shake;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    cursor: pointer;
+}
+@keyframes shake{
+    0%{
+        transform: translateX(-5px);
+        transform: translateY(-5px);
+    }
+    25%{
+        transform: translateX(10px);
+        transform: translateY(5px);
+    }
+    50%{
+        transform: translateX(-5px);
+    }
+    75%{
+        transform: translateX(10px);
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: translateX(-5px);
+        transform: translateY(5px);
+    }
+}
+#joke, span{
+    text-align: center;
+    width: 80%;
+    font-size: 1.3rem;
+    color: #cf5d00;
+}
+#btn{
+    width: 15%;
+    height: 25px;
+    background-color: white;
+    border-radius: 50px;
+    font-family: "Courier New", Arial, sans-serif;
+    background-color: #ff7300;
+    color: #ffff;
+    border-color: #ffff;
+    border-style: hidden;
+}
+select{
+    width: 80px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50px;
+    font-family: "Courier New", Arial, sans-serif;
+    color: #b85300;
+    border-color: #b85300;
+}
