@@ -26,7 +26,13 @@ function renderizarPersonagens(itens){
                 </div>
             </div>
         `;
+        divPersonagens.addEventListener('click', ()=>{
+            detalhesPersonagem(index)
+        })
         divPersonagens.classList.add('personagem')
         container.appendChild(divPersonagens)
-    })
+    });
+}
+function detalhesPersonagem(index){
+    window.location.href = `./pages/person.html?index=${index}`
 }
