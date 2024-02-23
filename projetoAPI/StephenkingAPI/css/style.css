@@ -1,5 +1,72 @@
-body{
+:root{
+    --font-color: #140101;
+    --white: #f3f3f3;
+    --red-900: #3f0000;
+    --red-600: #790000;
+    --red-300: #aa0000;
+}
+*{
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    
+}
+body{
+    font-family: 'ITC Benguiat', serif; 
+}
+/*barra de navegação*/
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--red-300);
+}
+.home{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: bold;
+}
+.nav-ul{
+    display: flex;
+    list-style: none;
+}
+.nav-li .nav-a{
+    color: var(--white);
+    margin: 0 35px 0 0;
+    text-decoration: none;
+}
+/*main*/
+.section-intro{
+    padding: 15px;
+    justify-content: center;
+    text-align: center;
+    color: var(--red-900);
+}
+.section-intro h1{
+    font-size: 55px;
+}
+.section-intro h3{
+    font-size: 25.5px;
+}
+.section-intro p{
+    padding: 20px;
+    font-size: 20px;
+}
+.btnItro{
+    color: var(--white);
+    background-color: var(--red-600);
+    text-decoration: none;
+    border-radius: 15px;
+    border-style: none;
+    width: 100px;
+    height: 25px;
+}
+/*footer*/
+footer{
+    text-align: center;
+    color: var(--white);
+    background-color: var(--red-300);
+    font-size: 15px;
+    padding: 11px 0;
 }

@@ -4,14 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJETO API</title>
-    <link rel="stylesheet" href="../StephenkingAPI/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ITC+Benguiat&display=swap">
+    <title>STEPHEN KING API</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar"><a class="home" href="index.html">STEPHEN KING</a></nav>
+    <header class="container">
+        <nav class="navbar">
+            <a class="home" href="./index.html">SKAPI</a>
+            <ul class="nav-ul">
+                <li class="nav-li"><a class="nav-a" href="./pages/login.html">LOGIN</a></li>
+            </ul>
+        </nav>
     </header>
-    <main></main>
-    <script src="../StephenkingAPI/js/script.js"></script>
+    <main class="container">
+        <section class="section-intro">
+            <h1>SKAPI - Stephen King API</h1>
+            <h3>The API about the books of the "King of Horror!"</h3>
+            <p>Dive into the intriguing literary universe of Stephen King, filled with suspense, horror, and engaging narratives. From timeless classics to the latest releases, each book offers a unique immersion into the depths of the contemporary master of terror's creativity. Discover the distinctive allure of his stories, where fear meets narrative brilliance.</p>
+        </section class="container">
+        <section id="books-section" class="books-section"></section>
+    </main>
+    <footer>
+        <p>All rights reserved &copy;</p>
+    </footer>
+    <script src="./js/script.js"></script>
+    <script src="./js/serve.js"></script>
 </body>
 </html>
