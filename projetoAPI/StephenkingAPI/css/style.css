@@ -70,3 +70,46 @@ footer{
     font-size: 15px;
     padding: 11px 0;
 }
+/*login*/
+.login-box{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+.login-form{
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: var(--red-300);
+    padding: 50px;
+    border-radius: 15px;
+    color: var(--white);
+}
+.login-form h1{
+    font-size: 50px;
+    padding-bottom: 25px;
+}
+.login-form label{
+    font-size: 20px;
+    font-weight: bold;
+}
+.login-form input{
+    font-size: 15px;
+    height: 30px;
+    width: 350px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+}
+.login-form .btn{
+    background-color: var(--red-300);
+    border-radius: 8px;
+    border: none;
+    color: var(--red-300);
+    background-color: var(--white);
+    font-size: 15PX;
+    font-weight: bold;
+    height: 30px;
+    margin-top: 15px;
+}

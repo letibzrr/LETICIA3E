@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    
+    <header class="container">
+        <nav class="navbar">
+            <a class="home" href="../index.html">SKAPI</a>
+            <ul class="nav-ul">
+                <li class="nav-li"><a class="nav-a" href="./pages/login.html">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="login-box">
+        <form class="login-form">
+            <h1>LOGIN SKAPI</h1>
+
+            <label for="user">USER:</label>
+            <input type="text" name="user" id="user" placeholder="Ex: John">
+
+            <label for="password">PASSWORD:</label>
+            <input type="text" name="password" id="password" placeholder="Ex: 123456">
+
+            <button class="btn" id="login">LOGIN</button>
+        </form>
+    </main>
+    <footer>
+        <p>All rights reserved &copy;</p>
+    </footer>
+    <script src="../js/login.js"></script>
 </body>
 </html>
