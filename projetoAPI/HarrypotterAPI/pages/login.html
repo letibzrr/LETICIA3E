@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN SKAPI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Shadows+Into+Light&display=swap" rel="stylesheet"> 
+    <title>PROJETO API</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header class="container">
         <nav class="navbar">
-            <a class="home" href="../index.html">SKAPI</a>
+            <a class="home" href="../index.html">HAPPI</a>
             <ul class="nav-ul">
                 <li class="nav-li"><a class="nav-a" href="./pages/login.html">LOGIN</a></li>
             </ul>
         </nav>
     </header>
     <main class="login-box">
+        <div class="box-text">
+            <h1>Welcome to the Harry Potter API login page!</h1>
+            <h2>Enter your username and password to access HAPPI!</h2>
+            <img src="../image/login.png" alt="">
+        </div>
         <form class="login-form">
-            <h1>LOGIN SKAPI</h1>
+            <h1>LOGIN</h1>
 
             <label for="user">USER:</label>
             <input type="text" name="user" id="user" placeholder="Ex: John">
@@ -28,8 +36,8 @@
             <button class="btn" id="login">LOGIN</button>
         </form>
     </main>
-    <footer>
-        <p>All rights reserved &copy;</p>
+    <footer class="footer">
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
     </footer>
     <script src="../js/login.js"></script>
 </body>
