@@ -1,37 +1,63 @@
 //https://hp-api.onrender.com/api/characters
 
-document.addEventListener('DOMContentLoaded', ()=>{
-    const baseURL = 'https://hp-api.onrender.com/api/characters'
+document.addEventListener('DOMContentLoaded', () => {
+    const baseURL = 'https://hp-api.onrender.com/api/characters';
+
     fetch(baseURL)
-    .then((response)=>{
-        if(!response.ok){
-            throw new Error('Erro de rede: Código'+response.status)
-        }
-        return response.json()
-    })
-    .then((data)=>{
-        spell(data[0].actor, data[0].name, data[0].alternate_names, data[0].species, data[0].gender, data[0].house, data[0].dateOfBirth, data[0].ancestry, data[0].patronus)
-    })
-    function spell(actor, name, alternate_names, species, gender, house, dateOfBirth, ancestry, patronus) {
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro de rede: Código' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => showCharacters(data.slice(0, 24)))
+        .catch(error => console.error('Erro ao obter dados:', error));
 
-        const actorElement = document.querySelector('.actor');
-        const nameElement = document.querySelector('.name');
-        const alternate_namesElement = document.querySelector('.alternate_names');
-        const speciesElement = document.querySelector('.species');
-        const genderElement = document.querySelector('.gender');
-        const houseElement = document.querySelector('.house');
-        const dateOfBirthElement = document.querySelector('.dateOfBirth');
-        const ancestryElement = document.querySelector('.ancestry');
-        const patronusElement = document.querySelector('.patronus');
+    function showCharacters(characters) {
+        const characterSection = document.querySelector('.character-section');
 
-        actorElement.innerHTML = `Actor: ${actor}`;
-        nameElement.innerHTML = `Name: ${name}`;
-        alternate_namesElement.innerHTML = `Alternate Name: ${alternate_names}`;
-        speciesElement.innerHTML = `Species: ${species}`;
-        genderElement.innerHTML = `Gender: ${gender}`;
-        houseElement.innerHTML = `House: ${house}`;
-        dateOfBirthElement.innerHTML = `Date of Birth: ${dateOfBirth}`;
-        ancestryElement.innerHTML = `Ancestry: ${ancestry}`;
-        patronusElement.innerHTML = `Patronus: ${patronus}`;
+        characters.forEach(character => {
+            const characterDiv = document.createElement('div');
+            characterDiv.classList.add('character');
+
+            const characterImageElement = document.createElement('img');
+            characterImageElement.src = character.image;
+
+            const actorElement = document.createElement('p');
+            actorElement.innerHTML = `Actor: ${character.actor}`;
+
+            const nameElement = document.createElement('p');
+            nameElement.innerHTML = `Name: ${character.name}`;
+
+            const speciesElement = document.createElement('p');
+            speciesElement.innerHTML = `Species: ${character.species}`;
+
+            const genderElement = document.createElement('p');
+            genderElement.innerHTML = `Gender: ${character.gender}`;
+
+            const houseElement = document.createElement('p');
+            houseElement.innerHTML = `House: ${character.house}`;
+
+
+            const ancestryElement = document.createElement('p');
+            ancestryElement.innerHTML = `Ancestry: ${character.ancestry}`;
+            
+            const patronusElement = document.createElement('p');
+            patronusElement.innerHTML = `Patronus: ${character.patronus}`;
+
+            characterDiv.appendChild(characterImageElement);
+            characterDiv.appendChild(actorElement);
+            characterDiv.appendChild(nameElement);
+            characterDiv.appendChild(speciesElement);
+            characterDiv.appendChild(genderElement);
+            characterDiv.appendChild(houseElement);
+            characterDiv.appendChild(ancestryElement);
+            characterDiv.appendChild(patronusElement);
+
+            characterSection.appendChild(characterDiv);
+        });
     }
-})
+});
+
+
+
