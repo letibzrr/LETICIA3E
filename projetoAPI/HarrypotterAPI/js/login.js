@@ -16,7 +16,7 @@ const data = [
         if(login){ //verificar e validar password e user
             window.location = '../index.html'
         }else{
-            alert('Usuário não identificado') 
+            alert('Usuário não identificado! Por favor, tente novamente!') 
         }
     })
   

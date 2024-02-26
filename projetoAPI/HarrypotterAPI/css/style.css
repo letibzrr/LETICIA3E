@@ -1,5 +1,6 @@
 :root{
-    --font-color: #27140D;
+    --font-color: #270d0d;
+    --black : #2c0b0b;
     --white: #FFFBFC;
     --red-1000: #490d09;
     --red-900: #63110D;
@@ -13,7 +14,7 @@
 }
 body{
     font-family: "Oswald", sans-serif;   
-    background-color: var(--red-1000); 
+    background-color: var(--black); 
 }
 /*barra de navegação*/
 .navbar{
@@ -21,7 +22,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-color: var(--red-600);
+    background-color: var(--red-900);
 }
 .home{
     text-decoration: none;
@@ -95,13 +96,12 @@ section img{
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    background-color: var(--red-300);
+    background-color: var(--red-600);
     padding: 20px;
     border-radius: 15px;
     color: var(--white);
     max-width: 600px; 
     width: 80%;
-    height: 80%;
 }
 .login-form h1{
     font-size: 40px; 
@@ -135,14 +135,15 @@ section img{
     transition: all 0.2s;
 }
 .login-form .btn:hover{
-    background-color: var(--red-600);
+    background-color: var(--red-300);
     color: var(--white);
 }
-/*character and spell*/
+/*character and spell btn*/
 .btns-home{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    text-align: center;
     padding: 10px;
     color: var(--white);
 }
@@ -155,7 +156,7 @@ section img{
     margin: 10px;
     height: 30px;
     width: 111px;
-    background-color: var(--white);
+    background-color: var(--red-300);
     border-style: none;
     border-radius: 8px;
     transition: all 0.2s;
@@ -170,7 +171,7 @@ section img{
 }
 .btn-character a, .btn-spell a{
     text-decoration: none;
-    color: var(--red-600);
+    color: var(--white);
 }
 .btn-character a:hover{
     background-color: var(--red-600);
@@ -180,13 +181,22 @@ section img{
     background-color: var(--red-600);
     color: var(--white);
 }
-
+/*character and spell*/
+.character-section, .spell-section{
+    color: var(--white);
+    font-size: 30px;
+    padding: 30px;
+}
 /*footer*/
 .footer {
-    background-color: var(--red-600);
+    background-color: var(--red-900);
     color: var(--white);
     text-align: center;
     padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
 }
 /*responsividade*/
 @media screen and (max-width: 400px) {
@@ -205,6 +215,9 @@ section img{
     .login-form input, .login-form .btn {
         font-size: 12px;
         height: 20px;
+    }
+    .btns-home h2{
+        font-size: 15px;
     }
 }
 @media screen and (max-width: 900px) {

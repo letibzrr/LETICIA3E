@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHARACTER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Shadows+Into+Light&display=swap" rel="stylesheet"> 
+    <title>CHARACTER API</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -15,9 +18,22 @@
             </ul>
         </nav>
     </header>
-    <section class="character-section"></section>
+    <section class="character-section">
+        <div id="character-dados" class="character-dados">
+            <span class="actor">Actor: </span>
+            <span class="name">Name: </span>                    
+            <span class="alternate_names">Alternate Names: </span>
+            <span class="species">Species: </span>
+            <span class="gender">Gender: </span>
+            <span class="house">House: </span>
+            <span class="dateOfBirth">Date of Birth: </span>
+            <span class="ancestry">Ancestry: </span>
+            <span class="patronus">Patronus: </span>
+        </div>
+    </section>
     <footer class="footer">
-        <p>&copy; 2024 Your Website. All rights reserved.</p>
+        <p>&copy; 2024 HAPPI. All rights reserved.</p>
     </footer>
+    <script src="../js/character.js"></script>
 </body>
 </html>
