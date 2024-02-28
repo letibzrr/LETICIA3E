@@ -22,26 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const characterImageElement = document.createElement('img');
             characterImageElement.src = character.image;
-
             const actorElement = document.createElement('p');
             actorElement.innerHTML = `Actor: ${character.actor}`;
-
             const nameElement = document.createElement('p');
             nameElement.innerHTML = `Name: ${character.name}`;
-
             const speciesElement = document.createElement('p');
             speciesElement.innerHTML = `Species: ${character.species}`;
-
             const genderElement = document.createElement('p');
             genderElement.innerHTML = `Gender: ${character.gender}`;
-
             const houseElement = document.createElement('p');
             houseElement.innerHTML = `House: ${character.house}`;
-
-
             const ancestryElement = document.createElement('p');
             ancestryElement.innerHTML = `Ancestry: ${character.ancestry}`;
-            
             const patronusElement = document.createElement('p');
             patronusElement.innerHTML = `Patronus: ${character.patronus}`;
 

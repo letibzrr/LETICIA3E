@@ -78,25 +78,54 @@ body{
     border-radius: 10px;
 }
 .character-box img{
-    width: 200px;
+    width: 50%;
+    border-top-left-radius: 1em  1em;
+    border-bottom-left-radius: 1em  1em;
 }
-article{
+.character-info{
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
-    padding: 5px;
-    font-size: 20px;
+    gap: 0.4rem;
 }
-.location, .origin{
-    padding-top: 10px;
-    color: #777777;
+.character-info h3{
+    font-size: 1.5rem;
 }
-a, h3{
+.character-info, a{
     color: var(--white);
     text-decoration: none;
 }
-a:hover{
+.character-info h3:hover, .character-info a:hover{
     color: var(--orange-400);
 }
-h3:hover{
-    color: var(--orange-400);
+.character-info .Alive::before{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+    margin-right: 0.4rem;
+}
+.character-info .Dead::before{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    margin-right: 0.4rem;
+}
+.character-info .location{
+    margin-top: 1rem;
+    font-weight: 600;
+}.location-section{
+    background-color: var(--gray-800);
+    text-align: center;
+}
+.location-container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 2rem;
+    gap: 1rem;
 }
