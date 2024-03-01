@@ -6,6 +6,7 @@
     --red-900: #63110D;
     --red-600: #741307;
     --red-300: #8d190a;
+    --red-150: #9b5a52;
 }
 *{
     box-sizing: border-box;
@@ -14,7 +15,8 @@
 }
 body{
     font-family: "Cinzel", serif;
-    background-color: var(--black); 
+    background: var(--black) url("../image/hidden.png") no-repeat center fixed;
+    background-blend-mode: darken;
 }
 /*barra de navegação*/
 .navbar{
@@ -105,7 +107,7 @@ main{
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    background-color: var(--red-600);
+    background-color: var(--red-1000);
     padding: 20px;
     border-radius: 15px;
     color: var(--white);
@@ -176,25 +178,15 @@ main{
     transition: all 0.2s;
 }
 .btn-character:hover{
-    background-color: var(--red-900);
-    color: var(--white);
+    background-color: var(--red-1000);
 }
 .btn-spell:hover{
-    background-color: var(--red-900);
-    color: var(--white);
+    background-color: var(--red-1000);
 }
 .btn-character a, .btn-spell a{
     text-decoration: none;
     color: var(--white);
     font-size: 20px;
-}
-.btn-character a:hover{
-    background-color: var(--red-900);
-    color: var(--white);
-}
-.btn-spell a:hover{
-    background-color: var(--red-900);
-    color: var(--white);
 }
 /*characters*/
 .character-intro{
@@ -220,12 +212,18 @@ main{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     border-radius: 15px;
+    background-color: var(--red-1000);
 }
 .character{
     display: inline;
     margin: 25px 50px;
     border-radius: 10px;
     font-size: 18px;
+    font-weight: bold;
+    color: var(--red-150);
+}
+.character:hover{
+    color: var(--white);
 }
 .character img{
     width: 295px;
@@ -265,7 +263,7 @@ main{
     border-radius: 15px;
 }
 .box-spell:hover{
-    background-color: var(--red-900);
+    background-color: var(--red-1000);
 }
 .spells-section{
     display: grid;
@@ -282,7 +280,8 @@ main{
     background-color: var(--red-900);
     color: var(--white);
     text-align: center;
-    padding: 10px;
+    font-weight: bold;
+    padding: 8px;
     position: relative;
     bottom: 0;
     width: 100%;
@@ -343,11 +342,6 @@ main{
     }
     .box-spell{
         width: 700px;
-    }
-}
-@media screen and (max-width: 1600px){
-    .character-section{
-        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 @media screen and (max-width: 700px) {

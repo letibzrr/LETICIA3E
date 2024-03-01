@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return response.json();
         })
-        .then(data => showSpells(data.slice(0, 24)))
+        .then(data => showSpells(data.slice(0, 77)))
         .catch(error => console.error('Erro ao obter dados:', error));
 
     function showSpells(spells) {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spells.forEach(spell => {
             const spellElement = document.createElement('div');
             spellElement.classList.add('spell');
-            spellElement.innerHTML = `<div class="box-spell"><h1>SPELL INFORMATION</h1><h1>Name: ${spell.name}</h1><h1>Description: ${spell.description}</h1></div>`;
+            spellElement.innerHTML = `<div class="box-spell"><h1>Name: ${spell.name}</h1><h1>Description: ${spell.description}</h1></div>`;
 
             spellsSection.appendChild(spellElement);
         });
