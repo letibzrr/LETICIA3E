@@ -15,8 +15,6 @@
             <a class="home" href="../index.html">HAPPI</a>
             <ul class="nav-ul">
                 <li class="nav-li"><a class="nav-a" href="../pages/login.html">LOGIN</a></li>
-                <li class="nav-li"><a class="nav-a" href="../pages/character.html">CHARACTERS</a></li>
-                <li class="nav-li"><a class="nav-a" href="../pages/spell.html">SPELLS</a></li>
             </ul>
         </nav>
     </header>
@@ -24,7 +22,14 @@
         <img src="../image/spell.png" alt="">
         <h1>Welcome to the space of spells mentioned in the Harry Potter universe and their functionalities!</h1>
     </section>
-    <section class="spells-section" id="spells-section"></section>
+    <section class="search">
+        <label for="spell-search">Search the spell:</label>
+        <input type="search" id="spell-search" placeholder="Ex: Avada Kedavra">
+        <button id="btnSearch" onclick="searchSpells()">SEARCH</button>
+    </section>
+    <section name="spells-section" class="spells-section" id="spells-section">
+    </section>
+    <img class="img-spells" src="../image/spells1.png" alt="">
     <footer class="footer">
         <p>&copy; 2024 HAPPI. All rights reserved.</p>
     </footer>

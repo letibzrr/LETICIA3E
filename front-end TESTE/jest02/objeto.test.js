@@ -42,30 +42,18 @@ test('Características do carro desejado', () => {
     expect(carroOlx).toMatchObject(carroDesejado)
 })
 
+const receitaDesejada = {
+    lactose: false
+}
 const boloChocolate = {
     lactose: true
-}
-const boloMorango = {
-    lactose: true
-}
-const panqueca = {
-    lactose: true
-}
-const mousse = {
-    lactose: true
-}
-const brigadeiro = {
-    lactose: true
-}
-const browie = {
-    lactose: true
-}
-const boloBanana = {
-    lactose: false
 }
 const boloCenoura = {
     lactose: false
 }
+test('Se há ou não lactose na receita', () => {
+    expect(receitaDesejada).toMatchObject(boloCenoura)
+})
 
 
 

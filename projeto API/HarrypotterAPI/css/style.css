@@ -62,34 +62,25 @@ main{
     padding: 10px;
 }
 .section-intro h1{
-    font-size: 55px;
+    font-size: 50px;
 }
 .section-intro h3{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-}
-.btnItro{
-    color: var(--white);
-    background-color: var(--red-600);
-    text-decoration: none;
-    border-radius: 15px;
-    border-style: none;
-    width: 100px;
-    height: 25px;
 }
 /*login*/
 .login-box{
-    height: 100vh;
+    height: 200vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: left;
     padding: 20px;
 }
 .box-text{
-    padding: 20px;
+    padding: 10px;
     color: var(--white);
+    text-align: center;
 }
 .box-text img{
     height: 292px;
@@ -105,14 +96,14 @@ main{
 }
 .login-form{
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
+    flex-flow: column;
+    justify-content: left;
     background-color: var(--red-1000);
     padding: 20px;
     border-radius: 15px;
     color: var(--white);
-    max-width: 500px; 
-    width: 70%;
+    max-width: 600px; 
+    width: 100%;
 }
 .login-form h1{
     font-size: 40px; 
@@ -132,7 +123,6 @@ main{
     padding: 10px;
 }
 .login-form .btn{
-    background-color: var(--red-300);
     border-radius: 8px;
     border: none;
     color: var(--red-300);
@@ -157,9 +147,28 @@ main{
 }
 .btns-section h2{
     font-size: 30px;
+    padding: 10px;
+}
+.img-desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.img-desc1, .img-desc2{
+    width: 680px;
+}
+.btns-section h1{
+    font-size: 25px;
+    padding: 5px;
+    text-align: justify;
+}
+.btns-section h2{
+    font-size: 30px;
+    padding: 5px;
 }
 .btn-spellAndCaracter h3{
-    font-size: 25px;
+    font-size: 30px;
     padding: 5px;
 }
 .btn-spellAndCaracter{
@@ -198,21 +207,20 @@ main{
     align-items: center;
 }
 .character-intro h1{
-    font-size: 35px;
-    text-align: center;
+    font-size: 30px;
+    text-align: left;
     padding: 10px;
 }
 .character-intro img{
-    width: 530px;
-    height: 359.5px;
+    width: 500px;
+    height: 339.5px;
 }
 .character-section{
     color: var(--white);
     margin: 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     border-radius: 15px;
-    background-color: var(--red-1000);
 }
 .character{
     display: inline;
@@ -240,82 +248,109 @@ main{
 }
 .spell-intro h1{
     font-size: 35px;
-    text-align: center;
+    text-align: left;
     padding: 5px;
 }
 .spell-intro img{
     width: 540px;
     height: 299.5px;
 }
-.spell{
+.search{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-.box-spell{
-    text-align: left;
+    flex-direction: column;
     align-items: center;
-    background-color: var(--red-300);
-    margin-bottom: 10px;
-    padding: 15px;
-    width: 900px;
-    font-size: 15px;
-    border-radius: 15px;
 }
-.box-spell:hover{
-    background-color: var(--red-1000);
+.search label{
+    color: var(--white);
+    font-size: 30px;
+    font-weight: bold;
+}
+.search input{
+    width: 333px;
+    height: 30px;
+    border-radius: 8px;
+    padding: 5px;
+}
+.search button{
+    height: 27px;
+    width: 100px;
+    margin: 8px;
+    border-radius: 15px;
+    color: var(--red-900);
+    background-color: var(--white);
+    border-style: none;
+}
+.search button:hover{
+    color: var(--white);
+    background-color: var(--red-600);
 }
 .spells-section{
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-content: space-around;
-    padding: 35px;
-    gap: 15px;
-    width: 100%;
+    margin: 30px;
+    padding: 15px;
+    color: var(--red-150);
+    background-color: var(--red-1000);
+    border-radius: 30px;
+    font-size: 15px;
+}
+.spells-section:hover{
     color: var(--white);
 }
-
+.img-spells{
+    margin: auto;
+    display: block;
+    padding: 15px;
+    width: 625px;
+}
 /*footer*/
 .footer {
     background-color: var(--red-900);
-    color: var(--white);
+    color: var(--red-150);
     text-align: center;
     font-weight: bold;
     padding: 8px;
     position: relative;
-    bottom: 0;
-    width: 100%;
-    height: 3rem;
+    font-size: 10px;
 }
 /*responsividade*/
-@media screen and (max-width: 400px) {
-    .login-form {
-        padding: 10px; 
+@media screen and (max-width: 900px) {
+    .img-intro{
+        width: 600px;
+        height: 401px;
     }
-
-    .login-form h1 {
-        font-size: 24px; 
+    .section-intro h1{
+        font-size: 44px;
     }
-
-    .login-form label {
-        font-size: 16px; 
+    .section-intro h3{
+        font-size: 20px;
     }
-
-    .login-form input, .login-form .btn {
-        font-size: 12px;
-        height: 20px;
+    .img-desc1, .img-desc2{
+        width: 500px;
     }
-    .btns-home h2{
+    .btns-section h1{
         font-size: 15px;
     }
-}
-@media screen and (max-width: 900px) {
-    section img{
-        width: 630px;
-        height: 400.5px;
+    .btns-section h2{
+        font-size: 25px;
     }
-    .spells-section{
-        grid-template-columns: 1fr;
+    .btn-spellAndCaracter h3{
+        font-size: 20px;
+    }
+    .btn-character a, .btn-spell a{
+        font-size: 20px;
+    }
+    .character-intro h1{
+        font-size: 22px;
+    }
+    .character-intro img{
+        width: 350px;
+        height: 259.5px;
+    }
+    .character{
+        font-size: 15px;
+    }
+    .character img{
+        width: 215px;
+        height: 290px;
     }
     .spell-intro h1{
         font-size: 25px;
@@ -324,32 +359,260 @@ main{
         width: 440px;
         height: 199.5px;
     }
-    .img-intro{
-        width: 730px;
-        height: 481.5px;
+    .search label{
+        font-size: 25px;
     }
-}
-@media screen and (max-width: 1200px){
+    .search input{
+        width: 300px;
+        height: 25px;
+    }
+    .search button{
+        height: 20px;
+        width: 100px;
+    }
+    .img-spells{
+        width: 505px;
+    }
+    .spells-section{
+        font-size: 13px;
+    }
     .box-text img{
-        height: 242px;
-        width: 448px;
+        height: 282px;
+        width: 458px;
     }
     .box-text h1{
-        font-size: 30px;
+        font-size: 25px;
     }
     .box-text h2{
-        font-size: 22px;
+        font-size: 18px;
     }
-    .box-spell{
-        width: 700px;
+    .login-form{
+        max-width: 450px; 
+    }
+    .login-form h1{
+        font-size: 30px; 
+    }
+    .login-form label{
+        font-size: 15px;
+    }
+    .login-form input{
+        font-size: 15px;
+    }
+    .login-form .btn{
+        font-size: 17px;
     }
 }
 @media screen and (max-width: 700px) {
-    section img{
-        width: 530px;
-        height: 340.5px;
+    .home{
+        font-size: 15px;
     }
-    .box-spell{
-        width: 500px;
+    .nav-li .nav-a{
+        font-size: 15px;
+    }
+    .img-intro{
+        width: 440px;
+        height: 300px;
+    }
+    .section-intro h1{
+        font-size: 30px;
+    }
+    .section-intro h3{
+        font-size: 18px;
+    }
+    .img-desc1, .img-desc2{
+        width: 270px;
+    }
+    .img-desc{
+        flex-direction: row;
+    }
+    .btns-section h1{
+        font-size: 15px;
+    }
+    .btns-section h2{
+        font-size: 18px;
+    }
+    .btn-spellAndCaracter h3{
+        font-size: 17px;
+    }
+    .btn-character a, .btn-spell a{
+        font-size: 15px;
+    }
+    .btn-character, .btn-spell{
+        height: 35px;
+        width: 125px;
+    }
+    .character-intro h1{
+        font-size: 18px;
+    }
+    .character-intro img{
+        width: 330px;
+        height: 209.5px;
+    }
+    .character{
+        font-size: 15px;
+    }
+    .character img{
+        width: 185px;
+        height: 250px;
+    }
+    .spell-intro h1{
+        font-size: 18px;
+    }
+    .spell-intro img{
+        width: 400px;
+        height: 159px;
+    }
+    .search label{
+        font-size: 21px;
+    }
+    .spells-section{
+        font-size: 11px;
+    }
+    .img-spells{
+        width:425px;
+    }
+    .box-text img{
+        height: 242px;
+        width: 398px;
+    }
+    .box-text h1{
+        font-size: 25px;
+    }
+    .box-text h2{
+        font-size: 18px;
+    }
+    .login-form{
+        max-width: 400px; 
+    }
+    .login-box{
+        height: 150vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .box-text{
+        padding: 10px;
+        color: var(--white);
+        text-align: center;
+    }
+    .box-text img{
+        height: 292px;
+        width: 498px;
+    }
+    .box-text h1{
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .box-text h2{
+        font-size: 22px;
+        font-weight: normal;
+    }
+}
+@media screen and (max-width: 500px) {
+    .home{
+        font-size: 13px;
+    }
+    .nav-li .nav-a{
+        font-size: 13px;
+    }
+    .img-intro{
+        width: 380px;
+        height: 260px;
+    }
+    .section-intro h1{
+        font-size: 27px;
+    }
+    .section-intro h3{
+        font-size: 13px;
+    }
+    .img-desc1, .img-desc2{
+        width: 200px;
+    }
+    .img-desc{
+        flex-direction: row;
+    }
+    .btns-section h1{
+        font-size: 12px;
+    }
+    .btns-section h2{
+        font-size: 15px;
+    }
+    .btn-spellAndCaracter h3{
+        font-size: 13px;
+    }
+    .btn-character a, .btn-spell a{
+        font-size: 11px;
+    }
+    .btn-character, .btn-spell{
+        height: 25px;
+        width: 105px;
+    }
+    .character-intro h1{
+        font-size: 13px;
+    }
+    .character-intro img{
+        width: 220px;
+        height: 120px;
+    }
+    .character-section{
+        grid-template-columns: 1fr;
+    }
+    .character{
+        font-size: 13px;
+    }
+    .character img{
+        width: 135px;
+        height: 180px;
+    }
+    .spell-intro h1{
+        font-size: 13px;
+    }
+    .spell-intro img{
+        width: 350px;
+        height: 159px;
+    }
+    .search label{
+        font-size: 18px;
+    }
+    .search input{
+        width: 290px;
+        height: 23px;
+    }
+    .search button{
+        height: 18px;
+        width: 100px;
+    }
+    .spells-section{
+        font-size: 10px;
+    }
+    .img-spells{
+        width:355px;
+    }
+    .box-text img{
+        height: 202px;
+        width: 338px;
+    }
+    .box-text h1{
+        font-size: 20px;
+    }
+    .box-text h2{
+        font-size: 15px;
+    }
+    .login-form{
+        max-width: 350px; 
+    }
+    .login-form h1{
+        font-size: 25px; 
+    }
+    .login-form label{
+        font-size: 13px;
+    }
+    .login-form input{
+        font-size: 13px;
+    }
+    .login-form .btn{
+        font-size: 14px;
     }
 }
