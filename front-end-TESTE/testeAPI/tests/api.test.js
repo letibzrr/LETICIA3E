@@ -1,12 +1,12 @@
 const axios = require('axios');
 
-async function hpAPI() {
-  const response = await axios.get('https://hp-api.onrender.com');
+async function APItest() {
+  const response = await axios.get('');
 
   return response.data;
 }
 
 test('Verifica se obtém os dados corretamente', async () => {
-  const data = await hpAPI();
+  const data = await APItest();
   expect(data).toBeDefined();
 });
