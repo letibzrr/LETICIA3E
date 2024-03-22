@@ -1,5 +1,4 @@
 const numeros = []
-
 // entrada
 const inNumero = document.getElementById('inNumero')
 // saidas
@@ -21,19 +20,29 @@ const adicionarNum = () => {
         numeros.push(num)
         let adicionar = ''
         numeros.map((numeros) => {
-        return adicionar += `${numeros}\n`;
+        return adicionar += `${numeros} \n`;
         })
-        outAdicionar.textContent = adicionar;
+        outAdicionar.textContent = `${numeros.join(', ')}`;
     }
     inNumero.value = ''
 };
 btnAdicionar.addEventListener('click', adicionarNum)
 // função verificar
 const verificarNum = () => {
-    if(a){
+    if(numeros.length === 0){
+        alert('Não existe nenhum número adicionado')
+        return
+    }
+    const verificarOrdem = numeros.every((num, index) => {
+        if(index === numeros.length - 1){
+            return true
+        }
+        return num < numeros[index + 1]
+    })
+    if(verificarOrdem){
         outVerificar.textContent = `Os números estão em ordem crescente: ${numeros}`
     }else{
-        outAdicionar.textContent = `Os números não estão em ordem cresecente: ${numeros}`
+        outVerificar.textContent = `Os números não estão em ordem cresecente: ${numeros}`
     }
 }
 btnVerificar.addEventListener('click', verificarNum)
