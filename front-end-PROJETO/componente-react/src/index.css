@@ -1,0 +1,18 @@
+header{
+    margin: 100px;
+}
+section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.box01{
+    height: 500px;
+    border-radius: 30px;
+    text-align: center;
+    color: aliceblue;
+    background-color: hsl(252, 100%, 67%);
+}
+.box02{
+    padding-left: 30px;
+}
