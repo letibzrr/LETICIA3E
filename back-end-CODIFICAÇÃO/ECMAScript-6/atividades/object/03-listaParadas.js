@@ -1,18 +1,14 @@
 const data = require ('./onibus.json')
 // Escreva uma função que aceite o ID da linha como entrada e retorne todas as paradas associadas a essa linha, ordenadas pela ordem de parada.
-const numLinhas = 2
-const id = 1
-//const id = 2
-
-const consultarHrs = (numLinhas, id) => {
-    if(id <= 0 || id > numLinhas || isNaN(id)){
-        console.log('Não foi possivel encontrar essa linha, tente novamente!')
-    }
-    
-    if(id === 1){
-        console.log(data.linhas[id - 1].paradas);
-    }else if(id === 2){
-        console.log(data.linhas[id - 1].paradas)
+const listarParadas = (idLinha) => {
+    const linha = data.linhas.find((linha) => linha.id === idLinha)
+    if(linha){
+        const paradasOrdenadas = linha.paradas.sort((a,b) => a.ordem - b.ordem)
+        return {paradasOrdenadas}
+    }else{
+        return {message: 'Paradas não encontrada para a linha solicitada'}
     }
 }
-consultarHrs(numLinhas, id)
+const id = 1
+const paradasLinhas = listarParadas(id)
+console.log(paradasLinhas)
