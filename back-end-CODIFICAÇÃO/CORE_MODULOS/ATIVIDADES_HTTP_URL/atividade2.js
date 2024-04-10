@@ -5,4 +5,3 @@ const parseUrl = new url.URL(adress)
 console.log(parseUrl.hostname)
 console.log(parseUrl.pathname)
 console.log(parseUrl.searchParams)
-
