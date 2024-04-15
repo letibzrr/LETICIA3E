@@ -1,0 +1,44 @@
+header{
+    display: flex;
+    flex-direction: row;
+}
+div{
+    width: 700px;
+    height: 350px;
+    padding: 30px;
+}
+h1{
+    font-size: 30px;
+    color: hsl(208, 100%, 97%);
+}
+p{
+    padding-top: 10px;
+    padding-bottom: 35px;
+    font-size: 15px;
+    color: hsla(0, 0%, 100%, 0.75);
+    font-weight: bold;
+}
+button{
+    width: 130px;
+    height: 30px;
+    border-radius: 20px;
+    border-style: none;
+}
+.sedans-box{
+    background-color: hsl(31, 77%, 52%);
+}
+.sedans-btn{
+    color: hsl(31, 77%, 52%);
+}
+.suvs-box{
+    background-color: hsl(184, 100%, 22%);
+}
+.suvs-btn{
+    color: hsl(184, 100%, 22%);
+}
+.luxury-box{
+    background-color: hsl(179, 100%, 13%);
+}
+.luxury-btn{
+    color: hsl(179, 100%, 13%);
+}
