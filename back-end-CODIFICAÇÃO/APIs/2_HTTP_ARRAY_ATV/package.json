@@ -2,8 +2,8 @@
   "name": "2_http_array_atv",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
   "type": "module",
+  "main": "server.js",
   "scripts": {
     "dev": "node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
