@@ -1,0 +1,16 @@
+section{
+    display: flex;
+    flex-direction: row;
+}
+span{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 22px;
+}
+button{
+    background-color: black;
+    color: white;
+    height: 70px;
+    width: 60px;
+    font-size: 30px;
+}
