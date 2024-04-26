@@ -1,10 +1,15 @@
 import React from "react"
 
 const Listar = () => {
-    const[items, setItems] = React.useState(['Item 1'])
+    const[items, setItems] = React.useState([])
 
     function HandleClick () {
-        setItems([...items, 'Novo Item'])
+        setItems([...items, `Item ${items.length}`])
+    }
+    function DeleteClick () {
+        const novoItem = [...items];
+        novoItem.pop();
+        setItems(novoItem);
     }
 
     return(
@@ -13,6 +18,7 @@ const Listar = () => {
         <li key={index}>{item}</li>
         ))}
         <button onClick={HandleClick}>Adicionar Item</button>
+        <button onClick={DeleteClick}>Remover Item</button>
         </>
     )
 }
