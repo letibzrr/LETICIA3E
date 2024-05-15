@@ -1,0 +1,14 @@
+[
+  {
+    "nomeUsuario": "Myllenny",
+    "email": "myllennnyv@gmail.com",
+    "senha": "123456",
+    "data": "13/05/2024",
+    "perfil": {
+      "nome": "myllennyv",
+      "bio": "@myllennyv.studiess",
+      "imagem": "/img/fotoperfil.png"
+    },
+    "id": 1
+  }
+]
