@@ -1,14 +1,13 @@
 [
   {
-    "nomeUsuario": "Myllenny",
-    "email": "myllennnyv@gmail.com",
+    "nomeUsuario": "luazrr",
+    "email": "lua@gmail.com",
     "senha": "123456",
-    "data": "13/05/2024",
+    "id": "ba047905-42dd-40f8-9386-03721028e706",
     "perfil": {
-      "nome": "myllennyv",
-      "bio": "@myllennyv.studiess",
-      "imagem": "/img/fotoperfil.png"
-    },
-    "id": 1
+      "nome": "Lua",
+      "bio": "it's me, lua!",
+      "caminhoImg": "C:\\Users\\3°E\\Documents\\LETICIA3E\\LETICIA3E\\back-end-CODIFICAÇÃO\\APIs\\5_HTTP_FS_ATV_SOCIALIZE\\server.js\\imagens\\ba047905-42dd-40f8-9386-03721028e706.png"
+    }
   }
 ]
