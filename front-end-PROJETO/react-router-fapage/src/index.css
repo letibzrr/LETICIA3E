@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: hsl(170, 81%, 10%);
+    text-align: center;
+    align-self: center;
+    font-family: "Fraunces", serif;
+}
+.LinkPages{
+    text-decoration: none;
+    font-size: 20px;
+    color: hsla(296, 41%, 79%, 0.795);
+    font-weight: bold;
+}
+footer{
+    margin: 50px;
+    padding: 10px;
+    background-color: hsla(296, 41%, 79%, 0.048);
+}
+footer, p{
+    color: hsl(295, 41%, 79%);
+    font-size: 20px;
+    text-align: center;
+}
+
