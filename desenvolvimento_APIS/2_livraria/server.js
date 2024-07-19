@@ -201,35 +201,39 @@ app.post("/funcionarios", (request, response) => { // cadastro do funcionario ->
         response.status(400).json({message: "O salario é obrigatorio"})
         return
     }
+    // validação email 
     if(!email){
         response.status(400).json({message: "O email é obrigatorio"})
         return
     }
-    const checkSql = /*sql*/ `SELECT * FROM funcionarios WHERE nome = "${nome}"
-    AND cargo = "${cargo}" AND data_contratacao = "${data_contratacao}" AND salario = "${salario}" AND email = "${email}"`
-
-    conn.query(checkSql, (err, data) => {
+    if(!email.includes("@")){
+        response.status(422).json({message: "Email deve conter @"})
+        return
+    }
+    const checkEmailSql = /*sql*/ `SELECT * FROM funcionarios WHERE email = "${email}"`
+    conn.query(checkEmailSql, (err, data) =>{
         if(err){
             response.status(500).json({message: "Erro ao buscar os funcionarios"})
             return console.log(err)
         }
         if(data.length > 0){
-            response.status(409).json({message: "Funcionario já existe na livraria"})
+            response.status(409).json({message: "Email já está em uso!"})
             return console.log(err)
         }
-        const id = uuidv4()
+    })
+    const id = uuidv4()
 
-        const insertSql = /*sql*/ `INSERT INTO funcionarios
-        (id, nome, cargo, data_contratacao, salario, email)
-        VALUES ("${id}", "${nome}", "${cargo}", "${data_contratacao}", "${salario}", "${email}")`
+    const insertSql = /*sql*/ `INSERT INTO funcionarios
+    (id, nome, cargo, data_contratacao, salario, email)
+    VALUES ("${id}", "${nome}", "${cargo}", "${data_contratacao}", "${salario}", "${email}")`
 
-        conn.query(insertSql, (err) => {
-            if(err){
-                response.status(500).json({message: "Erro ao cadastrar funcionario"})
-                return console.log(err)
-            }
-            response.status(201).json({message: "Funcionario cadastrado"})
-        })
+    conn.query(insertSql, (err) => {
+        if(err){
+            console.log(err)
+            response.status(500).json({message: "Erro ao cadastrar funcionario"})
+            return 
+        }
+        response.status(201).json({message: "Funcionario cadastrado"})
     })
 })
 app.get('/funcionarios/:id', (request, response) => { // listar funcionario por id
@@ -250,7 +254,7 @@ app.get('/funcionarios/:id', (request, response) => { // listar funcionario por 
 })
 app.put('/funcionarios/:id', (request, response) => { // atualizar funcionario
     const {id} = request.params
-    const {nome, cargo, data_contratacao, salario} = request.body;
+    const {nome, cargo, data_contratacao, salario, email} = request.body;
     // validação
     if(!nome){
         response.status(400).json({message: "O nome é obrigatorio"})
@@ -268,6 +272,15 @@ app.put('/funcionarios/:id', (request, response) => { // atualizar funcionario
         response.status(400).json({message: "O salario é obrigatorio"})
         return
     }
+    // validação email 
+    if(!email){
+        response.status(400).json({message: "O email é obrigatorio"})
+        return
+    }
+    if(!email.includes("@")){
+        response.status(422).json({message: "Email deve conter @"})
+        return
+    }
     const checkSql = /*sql*/ `SELECT * FROM funcionarios WHERE id = "${id}"`
     conn.query(checkSql, (err, data) => {
         if(err){
@@ -278,20 +291,34 @@ app.put('/funcionarios/:id', (request, response) => { // atualizar funcionario
             return response.status(404).json({message: "Funcionario não encontrado"})
         }
     })
-    // consultra sql para atualizar o funcionario
-    const updateSql = /*sql*/ `UPDATE funcionarios SET
-    nome = "${nome}", cargo = "${cargo}", data_contratacao = "${data_contratacao}", 
-    salario = "${salario}", WHERE id = "${id}" 
-    `
-    conn.query(updateSql, (err, data) => {
+    //verificação se um email enviado já existe em outro usuario
+    const emailCheckSql = /*sql*/ `SELECT * FROM funcionarios WHERE email = "${email}"
+    AND id != "${id}"`
+
+    conn.query(emailCheckSql, (err, data) =>{
         if(err){
             console.error(err)
             response.status(500).json({message:"Erro ao buscar funcionario"})
         }
-        if(data.length === 0){
-            return response.status(404).json({message: "Funcionario não encontrado"})
+        if(data.length > 0){
+            return response.status(409).json({message: "Email em uso!"})
         }
-    })
+        // consultra sql para atualizar o funcionario
+        const updateSql = /*sql*/ `UPDATE funcionarios SET
+        nome = "${nome}", cargo = "${cargo}", data_contratacao = "${data_contratacao}", 
+        salario = "${salario}", WHERE id = "${id}" 
+        `
+        conn.query(updateSql, (err, data) => {
+            if(err){
+                console.error(err)
+                response.status(500).json({message:"Erro ao atualizar funcionario"})
+            }
+            if(data.length === 0){
+                return response.status(404).json({message: "Funcionario não encontrado"})
+            }
+            response.status(200).json({message: "Usuário atualizado"})
+            })
+        })
 })
 app.delete('/funcionarios/:id', (request, response) => {
     const {id} = request.params
@@ -308,7 +335,15 @@ app.delete('/funcionarios/:id', (request, response) => {
         response.status(200).json({message: "Funcionario selecionado foi deletado"})
     })
 })
-
 app.use((request, response) => { //  rota não encontrada
     response.status(404).json({message: "Rota não encontrada"})
+})
+process.on("SIGINT", () =>{ //encerar conexão com banco de dados
+    conn.end((err) => {
+        if(err){
+            console.error(`Erro ao fechar conexão ${err.message}`)
+        }
+        console.log("Conexão com MYSQL encerrada")
+        process.exit();
+    })
 })
