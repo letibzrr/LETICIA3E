@@ -9,5 +9,6 @@ router.post("/cadastrar", cadastrarFuncionario);
 router.get("/:id", buscarFuncionario); 
 router.put("/atualizar/:id", atualizarFuncionario);
 router.delete("/deletar/:id", deletarFuncionario);
+
 export default router;
 
