@@ -1,3 +1,4 @@
+// criação da tabela de livros
 import conn from "../config/conn.js";
 
 const tableLivros = /*sql*/ `
@@ -17,7 +18,7 @@ conn.query(tableLivros, (err, result, field) => {
     if(err){
         console.error("Erro ao criar a tabela"+err.stack)
     }
-    console.log(result)
-    console.log(field)
+    //console.log(result)
+    //console.log(field)
     console.log("Tabela [livros] criada com sucesso")
 })

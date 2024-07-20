@@ -1,3 +1,4 @@
+// criação da tabela de funcionarios
 import conn from "../config/conn.js";
 
 const tableFuncionarios = /*sql*/ `
@@ -16,7 +17,7 @@ conn.query(tableFuncionarios, (err, result, field) => {
     if(err){
         console.error("Erro ao criar a tabela"+err.stack)
     }
-    console.log(result)
-    console.log(field)
+    //console.log(result)
+    //console.log(field)
     console.log("Tabela [funcionarios] criada com sucesso")
 })
