@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: #ffffff;
+}
+.Container{
+  background-color: #ffffff;
+}
+.TituloEquipamento{
+  font-size: 40px;
+  color: #68BD6F;
+  margin: 15px;
+  margin-left: 130px;
+}
+.DescricaoEquipamento{
+  font-size: 20px;
+  color: #3A3132;
+  margin: 10px;
+  margin-left: 130px;
+  margin-right: 95px;
+}
+.Box01, .Box02, .Box03, .Box04, .Box05{
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.CardBox01, .CardBox02, .CardBox03, .CardBox04, .CardBox05{
+  background-color: #ffffff;
+  width: 390px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px 1px #0000002d;
+  border-radius: 30px;
+}
+.ImgBox01, .ImgBox02, .ImgBox03, .ImgBox04, .ImgBox05{
+  width: 330px;
+  border-radius: 30px;
+}
+.TituloEqBox01, .TituloEqBox02, .TituloEqBox03, .TituloEqBox04, .TituloEqBox05{
+  margin: 5px;
+  text-align: center;
+  font-size: 30px;
+  color: #3A3132;
+}
+.DescricaoEqBox01, .DescricaoEqBox02, .DescricaoEqBox03, .DescricaoEqBox04, .DescricaoEqBox05{
+  text-align: center;
+  font-size: 18px;
+  margin: 15px;
+  color: #3A3132;
+  height: 55px;
+}
+.DisponibilidadeEqBox01, .DisponibilidadeEqBox02, .DisponibilidadeEqBox03, .DisponibilidadeEqBox04, .DisponibilidadeEqBox05{
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px;
+  background-color: #2D8034;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  width: 220px;
+}
