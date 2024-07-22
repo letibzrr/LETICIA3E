@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './Components/Equipamento'
-import './index.css'
+import Equipamento from './Equipamento'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App/>
+    <Equipamento/>
   </React.StrictMode>,
 )
