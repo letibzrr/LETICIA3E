@@ -37,10 +37,12 @@ export const cadastrarLivro = (request, response) => {
         response.status(400).json({message: "O preço é obrigatorio"})
         return
     }
-    const checkSql = /*sql*/ `SELECT * FROM livros WHERE titulo = "${titulo}"
-    AND autor = "${autor}" AND ano_publicacao = "${ano_publicacao}"`
 
-    conn.query(checkSql, (err, data) => {
+    // cadastro do livro
+    const checkSql = /*sql*/ `SELECT * FROM livros WHERE ?? = ? AND ?? = ? AND ?? = ?` // as ?? são referencia as variaveis do checkSqlData
+    const checkSqlData = ["titulo", titulo, "autor", autor, "ano_publicacao", ano_publicacao] // segurança do banco de dados, escondendo as variaveis
+
+    conn.query(checkSql, checkSqlData, (err, data) => {
         if(err){
             response.status(500).json({message: "Erro ao buscar os livros"})
             return console.log(err)
@@ -52,11 +54,12 @@ export const cadastrarLivro = (request, response) => {
         const id = uuidv4()
         const disponibilidade = 1
 
-        const insertSql = /*sql*/ `INSERT INTO livros
-        (id, titulo, autor, ano_publicacao, genero, preco, disponibilidade)
-        VALUES ("${id}", "${titulo}", "${autor}", "${ano_publicacao}", "${genero}", "${preco}", "${disponibilidade}")`
+        const insertSql = /*sql*/ `INSERT INTO livros (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)` // as ?? são referencia as variaveis do insertData
 
-        conn.query(insertSql, (err) => {
+        const insertData = ["livro_id", "titulo", "autor", "ano_publicacao", "genero", "preco", "disponibilidade",
+        id, titulo, autor, ano_publicacao, genero, preco, disponibilidade] // segurança do banco de dados, escondendo as variaveis
+
+        conn.query(insertSql, insertData, (err) => {
             if(err){
                 response.status(500).json({message: "Erro ao cadastrar livro"})
                 return console.log(err)

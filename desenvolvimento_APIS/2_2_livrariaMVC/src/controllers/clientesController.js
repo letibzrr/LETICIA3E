@@ -38,9 +38,11 @@ export const cadastrarCliente = (request, response) => {
         response.status(400).json({message: "A imagem é obrigatoria"})
         return
     }
-    
-    const checkEmailSql = /*sql*/ `SELECT * FROM clientes WHERE email = "${email}"`
-    conn.query(checkEmailSql, (err, data) =>{
+    // cadastro do cliente
+    const checkEmailSql = /*sql*/ `SELECT * FROM clientes WHERE ?? = ?`
+    const checkEmailSqlData = ["email", email]
+
+    conn.query(checkEmailSql, checkEmailSqlData, (err, data) =>{
         if(err){
             response.status(500).json({message: "Erro ao buscar os clientes"})
             return console.log(err)
@@ -52,11 +54,11 @@ export const cadastrarCliente = (request, response) => {
     })
     const id = uuidv4()
 
-    const insertSql = /*sql*/ `INSERT INTO clientes
-    (id, nome, email, senha, imagem)
-    VALUES ("${id}", "${nome}", "${email}", "${senha}", "${imagem}")`
+    const insertSql = /*sql*/ `INSERT INTO clientes (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)` // as ?? são referencia as variaveis do insertData
+    const insertData = ["cliente_id", "nome", "email", "senha", "imagem",
+    id, nome, email, senha, imagem] // segurança do banco de dados, escondendo as variaveis
 
-    conn.query(insertSql, (err) => {
+    conn.query(insertSql, insertData, (err) => {
         if(err){
             console.log(err)
             response.status(500).json({message: "Erro ao cadastrar cliente"})
@@ -147,3 +149,6 @@ export const atualizarCliente = (request, response) => {
             })
         })
 }
+
+
+

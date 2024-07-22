@@ -42,8 +42,11 @@ export const cadastrarFuncionario =(request, response) => {
         response.status(422).json({message: "Email deve conter @"})
         return
     }
-    const checkEmailSql = /*sql*/ `SELECT * FROM funcionarios WHERE email = "${email}"`
-    conn.query(checkEmailSql, (err, data) =>{
+    // cadastro do funcionario 
+    const checkEmailSql = /*sql*/ `SELECT * FROM funcionarios WHERE ?? = ?`
+    const checkSqlData = ["email", email]
+
+    conn.query(checkEmailSql, checkSqlData, (err, data) =>{
         if(err){
             response.status(500).json({message: "Erro ao buscar os funcionarios"})
             return console.log(err)
@@ -55,11 +58,11 @@ export const cadastrarFuncionario =(request, response) => {
     })
     const id = uuidv4()
 
-    const insertSql = /*sql*/ `INSERT INTO funcionarios
-    (id, nome, cargo, data_contratacao, salario, email)
-    VALUES ("${id}", "${nome}", "${cargo}", "${data_contratacao}", "${salario}", "${email}")`
+    const insertSql = /*sql*/ `INSERT INTO funcionarios (??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?)`
+    const insertData = ["funcionario_id", "nome", "cargo", "data_contratacao", "salario", "email",
+    id, nome, cargo, data_contratacao, salario, email]
 
-    conn.query(insertSql, (err) => {
+    conn.query(insertSql, insertData, (err) => {
         if(err){
             console.log(err)
             response.status(500).json({message: "Erro ao cadastrar funcionario"})
