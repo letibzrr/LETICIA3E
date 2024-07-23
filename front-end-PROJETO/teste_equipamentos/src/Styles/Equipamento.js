@@ -3,180 +3,74 @@ import styled from 'styled-components'
 const Cores = {
     Branco: '#ffff',
     Verde: '#2D8034',
-    Marrom: '#3A3132'
+    Marrom: '#3A3132',
+    Sombra: '#0000002d'
 }
 
-export const Container = styled.section`
+export const EquipamentosContainer = styled.section`
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px;
+    border-radius: 5px;
 `
-
 export const TituloEquipamento = styled.h1`
+    color: ${Cores.Verde};
+    font-size: 50px;
+    margin-left: 30px;
+    margin-bottom: 15px;
 `
 export const DescricaoEquipamento = styled.p`
-`
-
-
-export const Box01 = styled.div`
-`
-export const Box02 = styled.div`
-`
-export const Box03 = styled.div`
-`
-export const Box04 = styled.div`
-`
-export const Box05 = styled.div`
-`
-
-export const CardEq01 = styled.section`
-`
-export const CardEq02 = styled.section`
-`
-export const CardEq03 = styled.section`
-`
-export const CardEq04 = styled.section`
-`
-export const CardEq05 = styled.section`
-`
-export const CardEq06 = styled.section`
-`
-export const CardEq07 = styled.section`
-`
-export const CardEq08 = styled.section`
-`
-export const CardEq09 = styled.section`
-`
-export const CardEq10 = styled.section`
-`
-export const CardEq11 = styled.section`
-`
-export const CardEq12 = styled.section`
-`
-export const CardEq13 = styled.section`
-`
-export const CardEq14 = styled.section`
-`
-export const CardEq15 = styled.section`
-`
-
-export const TituloEq01 = styled.h1`
-`
-export const TituloEq02 = styled.h1`
-`
-export const TituloEq03 = styled.h1`
-`
-export const TituloEq04 = styled.h1`
-`
-export const TituloEq05 = styled.h1`
-`
-export const TituloEq06 = styled.h1`
-`
-export const TituloEq07 = styled.h1`
-`
-export const TituloEq08 = styled.h1`
-`
-export const TituloEq09 = styled.h1`
-`
-export const TituloEq10 = styled.h1`
-`
-export const TituloEq11 = styled.h1`
-`
-export const TituloEq12 = styled.h1`
-`
-export const TituloEq13 = styled.h1`
-`
-export const TituloEq14 = styled.h1`
-`
-export const TituloEq15 = styled.h1`
-`
-
-export const DescricaoEq01 = styled.p`
-`
-export const DescricaoEq02 = styled.p`
-`
-export const DescricaoEq03 = styled.p`
-`
-export const DescricaoEq04 = styled.p`
-`
-export const DescricaoEq05 = styled.p`
-`
-export const DescricaoEq06 = styled.p`
-`
-export const DescricaoEq07 = styled.p`
-`
-export const DescricaoEq08 = styled.p`
-`
-export const DescricaoEq09 = styled.p`
-`
-export const DescricaoEq10 = styled.p`
-`
-export const DescricaoEq11 = styled.p`
-`
-export const DescricaoEq12 = styled.p`
-`
-export const DescricaoEq13 = styled.p`
-`
-export const DescricaoEq14 = styled.p`
-`
-export const DescricaoEq15 = styled.p`
-`
-
-export const Disponibilidadeeq01 = styled.section`
-`
-export const Disponibilidadeeq02 = styled.section`
-`
-export const Disponibilidadeeq03 = styled.section`
-`
-export const Disponibilidadeeq04 = styled.section`
-`
-export const Disponibilidadeeq05 = styled.section`
-`
-export const Disponibilidadeeq06 = styled.section`
-`
-export const Disponibilidadeeq07 = styled.section`
-`
-export const Disponibilidadeeq08 = styled.section`
-`
-export const Disponibilidadeeq09 = styled.section`
-`
-export const Disponibilidadeeq10 = styled.section`
-`
-export const Disponibilidadeeq11 = styled.section`
-`
-export const Disponibilidadeeq12 = styled.section`
-`
-export const Disponibilidadeeq13 = styled.section`
-`
-export const Disponibilidadeeq14 = styled.section`
-`
-export const Disponibilidadeeq15 = styled.section`
-`
-
-export const ImgEquipamento1 = styled.img`
-`
-export const ImgEquipamento2 = styled.img`
-`
-export const ImgEquipamento3 = styled.img`
-`
-export const ImgEquipamento4 = styled.img`
-`
-export const ImgEquipamento5 = styled.img`
-`
-export const ImgEquipamento6 = styled.img`
-`
-export const ImgEquipamento7 = styled.img`
-`
-export const ImgEquipamento8 = styled.img`
-`
-export const ImgEquipamento9 = styled.img`
-`
-export const ImgEquipamento10 = styled.img`
-`
-export const ImgEquipamento11 = styled.img`
-`
-export const ImgEquipamento12 = styled.img`
-`
-export const ImgEquipamento13 = styled.img`
-`
-export const ImgEquipamento14 = styled.img`
-`
-export const ImgEquipamento15 = styled.img`
+    font-style: normal;
+    margin-left: 30px;
+`
+export const BoxTrioEquipamentos = styled.div`
+    background-color: ${Cores.Branco};
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+`
+export const CardEquipamento = styled.section`
+    background-color: ${Cores.Branco};
+    width: 360px;
+    height: 450px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px 1px ${Cores.Sombra};
+    border-radius: 30px;
+`
+export const ImgEquipamento = styled.img`
+    width: 210px;
+    border-radius: 30px
+`
+export const NomeEquipamento = styled.h1`
+    margin: 5px;
+    text-align: center;
+    font-size: 24px;
+    color: ${Cores.Marrom};
+`
+export const FuncaoEquipamento = styled.p`
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: ${Cores.Marrom};
+    height: 70px;
+`
+export const DisponibilidadeEquipamento = styled.section`
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: ${Cores.Verde};
+    color: ${Cores.Branco};
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 10px;
+    width: 190px;
 `
