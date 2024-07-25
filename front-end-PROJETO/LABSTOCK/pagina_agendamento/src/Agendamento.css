@@ -1,0 +1,80 @@
+/* index.css ou App.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('../src/assets/details.png');
+  background-position: center;
+}
+.title01{
+  color: #68BD6F;
+  font-size: 48px;
+}
+.subTitle01{
+  font-style: normal;
+  font-weight: lighter;
+}
+.formulario-container {
+  font-family: 'Montserrat', sans-serif;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+.formulario {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 40vh;
+  margin: 0;
+}
+
+.formulario label {
+  font-weight: 500;
+}
+
+.formulario input,
+.formulario textarea,
+.formulario button {
+  padding: 10px; 
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+}
+
+.horarios {
+  display: flex;
+  justify-content: space-between;
+}
+
+.horario {
+  width: 45%; 
+}
+
+.formulario button {
+  padding: 10px 20px;
+  background-color: #194D26;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700; /* Montserrat Bold */
+}
+
+.formulario button:hover {
+  background-color: #2D8034;
+}
+
+.mensagem-enviada {
+  text-align: center;
+  padding: 20px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+}

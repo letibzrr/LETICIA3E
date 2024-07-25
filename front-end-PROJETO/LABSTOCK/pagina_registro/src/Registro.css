@@ -1,0 +1,96 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.formulario-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.title01 {
+  color: #68bd6f;
+  font-size: 48px;
+}
+
+.subTitle01 {
+  font-style: normal;
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario label {
+  font-weight: 500px;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+}
+
+.formulario select {
+  appearance: none;
+  background-color: white;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15.293 7.293a1 1 0 0 0-1.414 0L10 11.586 5.707 7.293a1 1 0 1 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l5-5a1 1 0 0 0 0-1.414z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 14px;
+  padding-right: 30px;
+}
+
+.horarios {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.horario {
+  flex: 1;
+}
+
+.formulario button {
+  padding: 10px 20px;
+  background-color: #194d26;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.formulario button:hover {
+  background-color: #2d8034;
+}
+
+.mensagem-enviada {
+  text-align: center;
+  padding: 20px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 20px;
+}
