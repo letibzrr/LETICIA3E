@@ -3,8 +3,8 @@ import conn from "../config/conn.js"
 const tableOnibus = /*sql*/ `
     CREATE TABLE IF NOT EXISTS onibus(
         onibus_id VARCHAR(60) PRIMARY KEY, 
-        motorista_id VARCHAR(60) NOT NULL,
-        linha_id VARCHAR(60) NOT NULL,
+        motorista_id INT NOT NULL,
+        linha_id INT NOT NULL,
         placa VARCHAR(255) NOT NULL,
         modelo VARCHAR(255) NOT NULL,
         ano_fabricacao YEAR(4) NOT NULL,

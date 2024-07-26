@@ -10,3 +10,5 @@ const conn = mysql.createPool({ // metodo funcional sem a instrução de connect
     port: process.env.MYSQL_PORT
 });
 export default conn;
+
+//Sen@iDev77!.

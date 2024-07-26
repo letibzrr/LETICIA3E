@@ -56,11 +56,12 @@ export const cadastrarMotorista = (request, response) => {
 };
 export const buscarMotorista = (request, response) => {
     const {id} = request.params
-    const sql = /*sql*/ `SELECT * FROM motoristas WHERE id = "${id}"`
-    conn.query(sql, (err, data) => {
+    const sql = /*sql*/ `SELECT * FROM motoristas WHERE ?? = ?`
+    const insertId = ["motorista_id", id]
+    conn.query(sql, insertId, (err, data) => {
         if(err){
             console.error(err)
-            response.status(500).json({message: "Erro ao buscar motorista"})
+            response.status(500).json({message: "Erro ao buscar motoristas"})
             return
         }
         if(data.length === 0){
@@ -71,4 +72,19 @@ export const buscarMotorista = (request, response) => {
     })
 };
 export const deletarMotorista = (request, response) => {
+    const {id} = request.params
+    const sql = /*sql*/ `DELETE FROM motoristas WHERE ?? = ?`
+    const deleteSql = ["motorista_id", id]
+    conn.query(sql, deleteSql, (err, info) => {
+        if(err){
+            console.error(err)
+            response.status(500).json({message: "Erro ao deletar motorista"})
+            return
+        }
+        if(info.affectedRows === 0){
+            response.status(404).json({message: "Motorista não encontrado"})
+            return 
+        }
+        response.status(200).json({message: "Motorista selecionado foi deletado"})
+    })
 };

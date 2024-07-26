@@ -56,8 +56,9 @@ export const cadastrarLinhas = (request, response) => {
 };
 export const buscarLinha = (request, response) => {
     const {id} = request.params
-    const sql = /*sql*/ `SELECT * FROM linhas WHERE id = "${id}"`
-    conn.query(sql, (err, data) => {
+    const sql = /*sql*/ `SELECT * FROM linhas WHERE ?? = ?`
+    const insertId = ["linha_id", id]
+    conn.query(sql, insertId, (err, data) => {
         if(err){
             console.error(err)
             response.status(500).json({message: "Erro ao buscar linhas"})
@@ -70,5 +71,38 @@ export const buscarLinha = (request, response) => {
         return response.status(200).json(linha)
     })
 };
-export const atualizarLinha = (request, response) => {
-};
+export const atualizarLinha = (req, res) => {
+    const { linha_id } = req.params;
+    console.log(linha_id)
+    const { nome_linha, numero_linha, itinerario } = req.body;
+
+    if (!nome_linha || !numero_linha || !itinerario) {
+      return res.status(400).json({
+        message:
+          "Dados incompletos ou inseridos de forma incorreta. Tente novamente.",
+      });
+    }
+
+    try {
+      const dataId = conn.query(`SELECT linha_id FROM linhas WHERE nome_linha = "${nome_linha}" AND numero_linha = "${numero_linha}"`)
+
+        if(dataId.length === 0) {
+            return res.status(404).json({
+                message: "Linha não encontrada na base de dados!"
+            })
+        }
+    
+    const DataUpdateLinha = conn.query(`UPDATE linhas SET nome_linha = "${nome_linha}", numero_linha =  "${numero_linha}", itinerario = "${itinerario}" WHERE linha_id = "${linha_id}"`)
+ 
+    conn.query(DataUpdateLinha,  (err, data) => {
+        if(err) {
+            res.status(400).json({message: "Erro ao tentar enviar os dados!"})
+        }
+
+        res.status(200).json({ message: "Linha atualizada com sucesso." });
+    })
+    } catch (error) {
+      res.status(500).json({message: "Erro ao tentar veficar os dados!"})
+    }
+  };
+  

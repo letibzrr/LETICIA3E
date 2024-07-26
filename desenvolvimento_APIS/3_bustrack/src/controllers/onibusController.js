@@ -16,7 +16,7 @@ export const getonibus = (request, response) => {
 export const cadastrarOnibus = (request, response) => {
     const {placa, modelo, ano_fabricacao, capacidade} = request.body
     if(!placa){
-        response.status(400).json({message: "A placa é obrigatoria"})
+        response.status(400).json({message: "A placa é obrigatorio"})
         return
     }
     if(!modelo){
@@ -24,11 +24,11 @@ export const cadastrarOnibus = (request, response) => {
         return
     }
     if(!ano_fabricacao){
-        response.status(400).json({message: "O ano de fabricacao é obrigatorio"})
+        response.status(400).json({message: "O ano de fabricação é obrigatorio"})
         return
     }
     if(!capacidade){
-        response.status(400).json({message: "A capacidade é obrigatoria"})
+        response.status(400).json({message: "A capacidade é obrigatorio"})
         return
     }
     const checkSql = /*sql*/ `SELECT * FROM onibus WHERE ?? = ? AND ?? = ? AND ?? = ? AND ?? = ?` 
@@ -43,12 +43,12 @@ export const cadastrarOnibus = (request, response) => {
             response.status(409).json({message: "Esse onibus já existe"})
             return console.log(err)
         }
-        const id = uuidv4()
+        const linha_id = uuidv4()
+        const onibus_id = uuidv4()
+        const motorista_id = uuidv4()
 
         const insertSql = /*sql*/ `INSERT INTO onibus (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)` 
-
-        const insertData = ["onibus_id", "motorista_id", "linha_id", "placa", "modelo", "ano_fabricacao", "capacidade",
-        onibus_id, motorista_id, linha_id, placa, modelo, ano_fabricacao, capacidade] 
+        const insertData = ["linha_id", "onibus_id", "motorista_id", "placa", "modelo", "ano_fabricacao", "capacidade", linha_id, onibus_id, motorista_id, placa, modelo, ano_fabricacao, capacidade] 
 
         conn.query(insertSql, insertData, (err) => {
             if(err){
@@ -61,8 +61,9 @@ export const cadastrarOnibus = (request, response) => {
 };
 export const buscarOnibus = (request, response) => {
     const {id} = request.params
-    const sql = /*sql*/ `SELECT * FROM onibus WHERE id = "${id}"`
-    conn.query(sql, (err, data) => {
+    const sql = /*sql*/ `SELECT * FROM onibus WHERE ?? = ?`
+    const insertId = ["onibus_id", id]
+    conn.query(sql, insertId, (err, data) => {
         if(err){
             console.error(err)
             response.status(500).json({message: "Erro ao buscar onibus"})

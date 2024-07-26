@@ -6,5 +6,5 @@ const router = Router();
 router.get("/", getMotorista);
 router.post("/cadastrar", cadastrarMotorista); 
 router.get("/:id", buscarMotorista); 
-router.put("/deletar/:id", deletarMotorista);
+router.delete("/deletar/:id", deletarMotorista);
 export default router;
