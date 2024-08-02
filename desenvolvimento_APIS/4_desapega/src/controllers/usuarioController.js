@@ -5,8 +5,8 @@ import jwt from "jsonwebtoken"
 
 //helpers
 import createUserToken from "../helpers/criar-usuarios-token.js";
-import { request, response } from "express";
 import getToken from "../helpers/get-token.js";
+import getUserByToken from "../helpers/get-user-by-token.js";
 
 export const register = (request, response) => {
     const {nome, email, telefone, senha, confirmsenha} = request.body 
@@ -124,3 +124,75 @@ export const checkUser = (request, response) => {
         usuarioAtual = null
     }
 } 
+export const getUserById = (request, response) => {
+    const {id} = request.params
+    const checkSql = /*sql*/ `
+        SELECT usuario_id, nome, email, telefone, imagem FROM usuarios WHERE ?? = ?
+    `
+    const checkData = ["usuario_id", id]
+    conn.query(checkSql, checkData, (err, data) => {
+        if(err){
+            console.error(err)
+            response.status(500).json({err: "Erro ao buscar usuário"})
+            return
+        }
+        if(data.length === 0){
+            response.status(404).json({err: "Usuário não encontrado"})
+            return
+        }
+        const usuario = data[0]
+        response.status(200).json(usuario)
+    })
+}
+export const updateUser = async (request, response) => {
+    //verificar se o usuario está logado e possibilitar upload de imagem para perfil
+    const {id} = request.params
+    try{
+        const token = getToken(request)
+        const user = await getUserByToken(token)
+        const {nome, email, telefone} = request.body
+        if(!nome){
+            return response.status(400).json({message: "O nome é obrigatório"})
+        }
+        if(!telefone){
+            return response.status(400).json({message: "O telefone é obrigatório"})
+        }
+        if(!email){
+            return response.status(400).json({message: "O email é obrigatório"})
+        }
+        const checkSql = /*sql*/ `SELECT * FROM usuarios WHERE ?? = ?`
+        const checkData = ["usuario_id", id]
+        
+        conn.query(checkSql, checkData, (err, data) => {
+            if(err){
+                console.error(err)
+                return response.status(500).json({err: "Erro ao buscar usuário"}) 
+            }
+            if(data.length === 0){
+                return response.status(404).json({err: "Usuário não encontrado"})
+            }
+            const checkEmailSql = /*sql*/ `SELECT * FROM usuarios WHERE ?? = ? AND ?? != ?`
+            const checkEmailData = ["email", email, "usuario_id", id]   
+            conn.query(checkEmailSql, checkEmailData, (err, data) => {
+                if(err){
+                    console.error(err)
+                    return response.status(500).json({err: "Erro ao buscar email"})
+                }
+                if(data.length > 0){
+                    return response.status(409).json({err: "Email em uso"})
+                }
+                const updateSql = /*sql*/ `UPDATE usuarios SET ?? = ?`
+                const updateData = [{nome, email, telefone}, "usuario_id", id]
+                conn.query(updateSql, updateData, (err) => {
+                    if(err){
+                        console.error(err)
+                        return response.status(500).json({err: "Erro ao atualizar usuário"})
+                    }
+                    response.status(200).json({message: "Usuário atualizado"})
+                })
+            })
+        })
+    } catch(error){
+        response.status(500).json({err: error})
+    }
+}
