@@ -151,6 +151,14 @@ export const updateUser = async (request, response) => {
         const token = getToken(request)
         const user = await getUserByToken(token)
         const {nome, email, telefone} = request.body
+
+        // adicionar imagem ao objeto
+        let imagem = user.imagem
+        if(request.file){
+            imagem = request.file.filename
+        }
+
+        //validação
         if(!nome){
             return response.status(400).json({message: "O nome é obrigatório"})
         }
@@ -181,8 +189,8 @@ export const updateUser = async (request, response) => {
                 if(data.length > 0){
                     return response.status(409).json({err: "Email em uso"})
                 }
-                const updateSql = /*sql*/ `UPDATE usuarios SET ?? = ?`
-                const updateData = [{nome, email, telefone}, "usuario_id", id]
+                const updateSql = /*sql*/ `UPDATE usuarios SET ? WHERE ?? = ?`
+                const updateData = [{nome, email, telefone, imagem}, "usuario_id", id]
                 conn.query(updateSql, updateData, (err) => {
                     if(err){
                         console.error(err)
@@ -193,6 +201,7 @@ export const updateUser = async (request, response) => {
             })
         })
     } catch(error){
-        response.status(500).json({err: error})
+        console.error(error)
+        response.status(error.status || 500).json({message: error.message || "Erro interno do servidor"})
     }
 }
