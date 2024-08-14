@@ -7,13 +7,13 @@ const createPalestranteToken = async (palestrante, request, response) => {
             nome:palestrante.nome,
             id: palestrante.palestrante_id
         },
-        "SENHASUPERSEGURAEDIFICIL" // senha para criptografia
+        "SENHASUPERSEGURAEDIFICILPALESTRANTE" // senha para criptografia
     )
     // retornar o token
     response.status(200).json({
         message : "Você está logado!",
         token : token,
-        palestranteId : palestrante.palestarnte_id
+        palestranteId : palestrante.palestrante_id
     })
 }
 

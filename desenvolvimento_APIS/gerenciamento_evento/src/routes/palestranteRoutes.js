@@ -7,8 +7,8 @@ import validarPalestrante from "../helpers/validar-palestrante.js"
 //ROTAS
 const router = Router();
 
-router.post("/create", validarPalestrante, create)
-router.get("/getAllPalestrante", getAllPalestrante)
+router.post("/palestrantes/create", validarPalestrante, create)
+router.get("/palestrantes/getAllPalestrante", getAllPalestrante)
 
 
 export default router;

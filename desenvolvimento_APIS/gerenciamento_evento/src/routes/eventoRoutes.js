@@ -1,9 +1,12 @@
 import { Router } from "express";
-import { } from "../controllers/eventoController.js" 
+import { create, agenda } from "../controllers/eventoController.js" 
 
 //HELPERS
 
 //ROTAS
 const router = Router();
+
+router.post("/criar", create)
+router.get("/agenda", agenda)
 
 export default router;

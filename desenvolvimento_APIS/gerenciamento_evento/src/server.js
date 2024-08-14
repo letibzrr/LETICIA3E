@@ -22,9 +22,9 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 //UTILIZAÇÃO DE ROTAS
-app.use('/eventos/palestrantes', palestranteRoutes)
-app.use('/eventos/palestrantes', participanteRoutes)
-app.use('/eventos/palestrantes', eventoRoutes)
+app.use('/eventos', palestranteRoutes)
+app.use('/eventos', participanteRoutes)
+app.use('/eventos', eventoRoutes)
 
 app.use((request, response) => {
     response.status(404).json({message: 'Recurso Indisponível'})
