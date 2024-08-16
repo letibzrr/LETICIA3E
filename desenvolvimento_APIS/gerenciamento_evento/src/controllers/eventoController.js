@@ -53,3 +53,42 @@ export const agenda = (request, response) => {
         return response.status(200).json(eventosDados)
     })
 }
+export const editar = (request, response) => {
+    const {id} = request.params
+    const {titulo, data, palestrante_id} = request.body
+
+    try{
+        const checkIdSql = /*sql*/ `SELECT evento_id FROM eventos WHERE titulo = "${titulo}" AND data = "${data}" AND palestrante_id = "${palestrante_id}"`
+        conn.query(checkIdData, checkIdSql, (err) => {
+            if(err){
+                console.error(err)
+                return response.status(500).json({err: "Erro ao buscar dados"})
+            }
+        })
+        const updateSql = /*sql*/ `UPDATE eventos SET titulo = "${titulo}" AND data = "${data}" AND palestrante_id = "${palestrante_id}" WHERE evento_id = "${id}"`
+        conn.query(updateSql, (err) => {
+            if(err){
+                console.error(err)
+                return response.status(500).json({err: "Erro ao atualizar evento"})
+            }
+            response.status(200).json({message: "Evento atualizado"})
+        })
+    }catch (error) {
+      response.status(500).json({message: "Erro ao tentar veficar os dados!"})
+    }
+}
+export const cancelar = (request, response) => {
+    const {id} = request.params
+    const checkSql = /*sql*/ `DELETE FROM eventos WHERE ?? = ?`
+    const deleteSql = ["evento_id", id]
+    conn.query(checkSql, deleteSql, (err, info) => {
+        if(err){
+            console.error(err)
+            return response.status(500).json({message: "Erro ao deletar evento"})
+        }
+        if(info.affectedRows === 0){
+            return response.status(404).json({message: "Evento não encontrado"})
+        }
+        response.status(200).json({message: "Evento selecionado deletado com sucesso"})
+    })
+}
