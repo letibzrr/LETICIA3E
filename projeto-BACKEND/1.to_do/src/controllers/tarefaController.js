@@ -57,10 +57,43 @@ export const getTarefa = async (request, response) => { // RF03
     try {
         //const tarefas = await Tarefa.findOne({ where: { id } })
         const tarefas = await Tarefa.findByPk(id) 
+        if(tarefas === null){
+            return response.status(404).json({message: "Tarefa Não Encontrada"})
+        }
         response.status(200).json(tarefas)
     } catch (error) {
         response.status(500).json({message: "Erro ao buscar tarefa"})
     }
 }
 
+export const updateTarefa = async (request, response) => { // RF04
+    const { id } = request.params
+    const { tarefa, descricao, status } = request.body
+
+    if(!tarefa){
+        return response.status(400).json({message: "A tarefa é obrigatória"})
+    }
+    if(!descricao){
+        return response.status(400).json({message: "A descrição é obrigatória"})
+    }
+    if(!status){
+        return response.status(400).json({message: "O status é obrigatório"})
+    }
+
+    const tarefaAtualizada = {
+        tarefa,
+        descricao,
+        status
+    }
+
+    try {
+        const [linhasAfetadas] = await Tarefa.update(tarefaAtualizada, { where: { id } });
+        if(linhasAfetadas <= 0){ // em caso de id não existente ou descrito errado
+            return response.status(404).json({message: "Tarefa Não Encontrada"})
+        }
+        response.status(200).json({message: "Tarefa Atualizada"})
+    } catch (error) {
+        response.status(500).json({message: "Erro ao atualizar tarefa"})
+    }
+}
 
