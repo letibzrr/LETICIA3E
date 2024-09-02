@@ -1,4 +1,5 @@
 import { request, response } from "express"
+import { json } from "sequelize"
 import Tarefa from "../models/tarefaModel.js"
 
 export const create = async (request, response) => { // RF01
@@ -97,3 +98,22 @@ export const updateTarefa = async (request, response) => { // RF04
     }
 }
 
+export const updateStatus = async (request, response) => { // RF05
+    const { id } = request.params;
+
+    try {
+        const tarefa = await Tarefa.findOne({ raw: true, where: { id } })
+        if(tarefa === null){
+            return response.status(404).json({message: "Tarefa não encontrada"})
+        }
+        if(tarefa.status === "pendente"){
+            await Tarefa.update({ status: "concluida" }, { where: { id }})
+        }else if(tarefa.status === "concluida"){
+            await Tarefa.update({ status: "pendente" }, { where: { id }})
+        }
+        const tarefaAtualizada = await Tarefa.findOne({ raw: true, where: { id } })
+        response.status(200).json(tarefaAtualizada)
+    } catch (error){
+        response.status(500).json({message: "Erro ao atualizar a tarefa"})
+    }
+}
