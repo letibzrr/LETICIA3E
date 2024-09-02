@@ -1,30 +1,46 @@
 import { request, response } from "express"
 import { json } from "sequelize"
 import Tarefa from "../models/tarefaModel.js"
+import { z } from "zod"
+import formatZodError from "../helpers/formatZodError.js"
+
+//validações com o zod
+const createSchema =  z.object({
+    tarefa: z.string().min(3, {message: "A tarefa deve ter pelo menos três caracteres"}).transform((txt)=>txt.toLowerCase()),
+    descricao: z.string().min(5, {message: " A descrição deve ter pelo menos cinco caracteres"}),
+});
+const getSchema = z.object({
+    id: z.string().uuid({message: "Id da tarefa inválido"})
+})
 
 export const create = async (request, response) => { // RF01
-    const {tarefa, descricao} = request.body
-    const status = "pendente"
 
-    if(!tarefa){
-        return response.status(400).json({err: "A tarefa é obrigatória"})
+    //implementando a validação com zod
+    const bodyValidation = createSchema.safeParse(request.body);
+    console.log(bodyValidation)
+    if (!bodyValidation.success) {
+      return response.status(400).json({ 
+        message: "Os dados recebidos do corpo da requisição são inválidos", 
+        detalhes: formatZodError(bodyValidation.error) 
+      });
     }
-    if(!descricao){
-        return response.status(400).json({err: "A descrição é obrigatória"})
-    }
-
+  
+    const { tarefa, descricao } = request.body;
+    const status = "pendente";
+  
     const novaTarefa = {
-        tarefa,
-        descricao,
-        status
-    }
+      tarefa,
+      descricao,
+      status,
+    };
     try {
-        await Tarefa.create(novaTarefa)
-        response.status(201).json({message: "Tarefa Cadastrada"})
+      await Tarefa.create(novaTarefa);
+      response.status(201).json({ message: "Tarefa Cadastrada" });
     } catch (error) {
-        response.status(500).json({message: "Erro ao cadastrar tarefa"})
+      console.error(error);
+      response.status(500).json({ message: "Erro ao cadastrar tarefa" });
     }
-}
+};
 
 export const getAll = async (request, response) => { // RF02
     // tarefas?page=1&limit=10
@@ -54,6 +70,14 @@ export const getAll = async (request, response) => { // RF02
 }
 
 export const getTarefa = async (request, response) => { // RF03
+    const paramValidator = getSchema.safeParse(request.params)
+    if(!paramValidator.success){
+        response.status(400).json({ 
+            message: "Número de identificação está inválido", 
+            detalhes: formatZodError(paramValidator.error) 
+        });
+    }
+
     const {id} = request.params
     try {
         //const tarefas = await Tarefa.findOne({ where: { id } })
@@ -68,6 +92,7 @@ export const getTarefa = async (request, response) => { // RF03
 }
 
 export const updateTarefa = async (request, response) => { // RF04
+    //precisa de validação
     const { id } = request.params
     const { tarefa, descricao, status } = request.body
 
@@ -99,6 +124,7 @@ export const updateTarefa = async (request, response) => { // RF04
 }
 
 export const updateStatus = async (request, response) => { // RF05
+    //precisa de validação
     const { id } = request.params;
 
     try {
@@ -119,6 +145,7 @@ export const updateStatus = async (request, response) => { // RF05
 }
 
 export const getTarefaPorSituacao = async (request, response) => { //RF06
+    //precisa de validação
     const { situacao } = request.params;
     if(situacao !== "pendente" && situacao !== "concluida"){
         return response.status(400).json({message: "Situação inválida! Use 'pendente' ou 'concluida'"})
