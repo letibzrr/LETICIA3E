@@ -117,3 +117,18 @@ export const updateStatus = async (request, response) => { // RF05
         response.status(500).json({message: "Erro ao atualizar a tarefa"})
     }
 }
+
+export const getTarefaPorSituacao = async (request, response) => { //RF06
+    const { situacao } = request.params;
+    if(situacao !== "pendente" && situacao !== "concluida"){
+        return response.status(400).json({message: "Situação inválida! Use 'pendente' ou 'concluida'"})
+    }
+
+    try {
+        const tarefas = await Tarefa.findAll({where: { status: situacao }, raw: true})
+        response.status(200).json(tarefas)
+    } catch (error) {
+        response.status(500).json({message: "Erro ao buscar tarefas"})
+    }
+ 
+}
