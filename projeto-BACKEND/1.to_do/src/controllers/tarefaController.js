@@ -12,9 +12,16 @@ const createSchema =  z.object({
 const getSchema = z.object({
     id: z.string().uuid({message: "Id da tarefa inválido"})
 })
+const updateSchema = z.object({
+    tarefa: z.string().min(3, {message: "A tarefa deve ter pelo menos 3 caracteres"}).transform((txt) => txt.toLowerCase()),
+    descricao:z.string().min(3, {message: "A descrição deve ter pelo menos 3 caracteres"}),
+    situacao: z.enum(["pendente", "concluida"]),
+})
+const getSituacaoSchema = z.object({
+    situacao: z.enum(["pendente", "concluida"])
+})
 
 export const create = async (request, response) => { // RF01
-
     //implementando a validação com zod
     const bodyValidation = createSchema.safeParse(request.body);
     console.log(bodyValidation)
@@ -70,12 +77,14 @@ export const getAll = async (request, response) => { // RF02
 }
 
 export const getTarefa = async (request, response) => { // RF03
+    //implementando a validação com zod
     const paramValidator = getSchema.safeParse(request.params)
     if(!paramValidator.success){
         response.status(400).json({ 
             message: "Número de identificação está inválido", 
             detalhes: formatZodError(paramValidator.error) 
         });
+        return;
     }
 
     const {id} = request.params
@@ -92,19 +101,26 @@ export const getTarefa = async (request, response) => { // RF03
 }
 
 export const updateTarefa = async (request, response) => { // RF04
-    //precisa de validação
+    //implementando a validação com zod
+    const paramValidator = getSchema.safeParse(request.params)
+    if(!paramValidator.success){
+        response.status(400).json({ 
+            message: "Número de identificação está inválido", 
+            detalhes: formatZodError(paramValidator.error) 
+        });
+        return;
+    }
+    const upatadeValidator = updateSchema.safeParse(request.boy)
+    if(!upatadeValidator.success){
+        response.status(400).json({
+            message: "Dados para atualização estão incorretos",
+            details: formatZodError(upatadeValidator.error)
+        })
+        return
+    }
+
     const { id } = request.params
     const { tarefa, descricao, status } = request.body
-
-    if(!tarefa){
-        return response.status(400).json({message: "A tarefa é obrigatória"})
-    }
-    if(!descricao){
-        return response.status(400).json({message: "A descrição é obrigatória"})
-    }
-    if(!status){
-        return response.status(400).json({message: "O status é obrigatório"})
-    }
 
     const tarefaAtualizada = {
         tarefa,
@@ -124,7 +140,16 @@ export const updateTarefa = async (request, response) => { // RF04
 }
 
 export const updateStatus = async (request, response) => { // RF05
-    //precisa de validação
+    //implementando a validação com zod
+    const paramValidator = getSchema.safeParse(request.params)
+    if(!paramValidator.success){
+        response.status(400).json({ 
+            message: "Número de identificação está inválido", 
+            detalhes: formatZodError(paramValidator.error) 
+        });
+        return;
+    }
+
     const { id } = request.params;
 
     try {
@@ -145,7 +170,16 @@ export const updateStatus = async (request, response) => { // RF05
 }
 
 export const getTarefaPorSituacao = async (request, response) => { //RF06
-    //precisa de validação
+    //implementando a validação com zod
+    const situacaoValidator = getSituacaoSchema.safeParse(request.params)
+    if(!situacaoValidator.success){
+        response.status(400).json({
+            message: "Situação inválida",
+            details: formatZodError(situacaoValidator.error)
+        })
+        return
+    }
+
     const { situacao } = request.params;
     if(situacao !== "pendente" && situacao !== "concluida"){
         return response.status(400).json({message: "Situação inválida! Use 'pendente' ou 'concluida'"})
