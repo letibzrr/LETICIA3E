@@ -1,5 +1,4 @@
-const ordemAlfabetica = (strings) => {
+export const ordemAlfabetica = (strings) => {
     return strings.sort();
 }
 
-module.exports = ordemAlfabetica

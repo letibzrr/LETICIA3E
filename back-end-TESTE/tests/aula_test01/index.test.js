@@ -1,5 +1,5 @@
-const isPerfectSquare = require('../../scripts/aula01/atividade/quadradoPerfeito.js')
-const frutasArr = require("../../scripts/aula01/atividade/arrFrutas.js")
+import { isPerfectSquare } from '../../scripts/aula_scripts01/exemplos/quadradoPerfeito.js'
+import { frutasArr } from "../../scripts/aula_scripts01/exemplos/arrFrutas.js"
 
 describe('Teste de quadrado perfeito', () => {
   test('Deve retornar true para números que são quadrados perfeitos', () => {
@@ -26,12 +26,10 @@ describe('Teste pra verificar strings', () => {
     it("Deve retornar a comparação da strings", () => {
         expect("Jose").toBe("Jose")                                                                                                                                             
     })
-    
 })
 
 describe('Teste pra verificar as frutas', () => {
     it("Deve retornar as frutas corretas", () => {
-        expect(frutasArr()).toContain("Maça")
+        expect(frutasArr).toContain("Maça")
     })
-    
 })
